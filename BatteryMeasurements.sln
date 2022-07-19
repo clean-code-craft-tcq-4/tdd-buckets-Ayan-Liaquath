@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryMeasurements", "BatteryMeasurements\BatteryMeasurements.csproj", "{68EA1B34-AD94-4DA2-A232-4397C6115622}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryMeasurements.Tests", "BatteryMeasurements.Tests\BatteryMeasurements.Tests.csproj", "{E27CE1F6-B889-4D50-8B00-0F1DA2DF9368}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68EA1B34-AD94-4DA2-A232-4397C6115622}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68EA1B34-AD94-4DA2-A232-4397C6115622}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68EA1B34-AD94-4DA2-A232-4397C6115622}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68EA1B34-AD94-4DA2-A232-4397C6115622}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27CE1F6-B889-4D50-8B00-0F1DA2DF9368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27CE1F6-B889-4D50-8B00-0F1DA2DF9368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27CE1F6-B889-4D50-8B00-0F1DA2DF9368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27CE1F6-B889-4D50-8B00-0F1DA2DF9368}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9B34282-CC7F-4018-93B0-B35D5CEE1860}
+	EndGlobalSection
+EndGlobal
