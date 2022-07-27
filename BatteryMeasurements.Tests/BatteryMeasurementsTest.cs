@@ -11,8 +11,7 @@ namespace BatteryMeasurements.Tests
         private readonly MockSensorReadingProcessor _SensorReadingProcessor;
 
         private IBatteryMeasurements _BatteryMeasurements;
-
-
+        
         private int _PrinterFunctionCall;
 
         public BatteryMeasurementsTest()
