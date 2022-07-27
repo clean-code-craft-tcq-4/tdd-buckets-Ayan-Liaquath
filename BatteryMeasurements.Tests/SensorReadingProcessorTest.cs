@@ -39,8 +39,8 @@ namespace BatteryMeasurements.Tests
         public void Process12BitA2DConverterChargingReadingsWithDuplicateReadings()
         {
             PerformTest(new SensorReadingProcessor(0, 0, 10, 4094),
-                new List<int> { 1000, 500, 0, 1000, 60 },
-                new List<int> { 2, 1, 0, 2, 0 });
+                new List<int> { 1000, -1, 0, 1000, 60 },
+                new List<int> { 2, 0, 2, 0 });
         }
 
         [Fact]
