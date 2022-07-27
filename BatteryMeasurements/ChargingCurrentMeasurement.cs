@@ -19,7 +19,7 @@ namespace BatteryMeasurements
         {
             var currentRangesAndReadings = new List<IRangeAndReadings>();
 
-            currentRanges.Sort();
+            currentRanges = SortList(currentRanges);
 
             var lowerLimit = currentRanges.First();
 
@@ -47,6 +47,13 @@ namespace BatteryMeasurements
             currentRangesAndReadings.Add(new ChargingCurrentRangeAndReadings(lowerLimit, upperLimit, numberOfReadings));
 
             return currentRangesAndReadings;
+        }
+
+        private static List<int> SortList(List<int> unsortedList)
+        {
+            unsortedList?.Sort();
+
+            return unsortedList;
         }
 
         private static bool CheckUpperLimit(int currentSample, int upperLimit)
