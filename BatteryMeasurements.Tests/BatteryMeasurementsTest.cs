@@ -4,11 +4,14 @@ namespace BatteryMeasurements.Tests
 
     public class BatteryMeasurementsTest
     {
-        private readonly IBatteryMeasurements _BatteryMeasurements;
-
         private readonly MockChargingCurrentMeasurement _ChargingCurrentMeasurement;
 
         private readonly MockFormatter _Formatter;
+
+        private readonly MockSensorReadingProcessor _SensorReadingProcessor;
+
+        private IBatteryMeasurements _BatteryMeasurements;
+
 
         private int _PrinterFunctionCall;
 
@@ -16,9 +19,11 @@ namespace BatteryMeasurements.Tests
         {
             _ChargingCurrentMeasurement = new MockChargingCurrentMeasurement();
             _Formatter = new MockFormatter();
+            _SensorReadingProcessor = new MockSensorReadingProcessor();
+
             _PrinterFunctionCall = 0;
 
-            _BatteryMeasurements = new BatteryMeasurements(_ChargingCurrentMeasurement, _Formatter);
+            _BatteryMeasurements = new BatteryMeasurements(_ChargingCurrentMeasurement, _Formatter, _SensorReadingProcessor);
         }
 
         [Fact]
@@ -26,7 +31,7 @@ namespace BatteryMeasurements.Tests
         {
             _BatteryMeasurements.DetectChargingCurrentRangesAndReadings(null, PrinterFunction);
 
-            DoAssertion(1,1,1);
+            DoAssertion(1,1,1, 1);
         }
 
         [Fact]
@@ -34,16 +39,29 @@ namespace BatteryMeasurements.Tests
         {
             _BatteryMeasurements.DetectChargingCurrentRangesAndReadings(null, null);
 
-            DoAssertion(1, 1, 0);
+            DoAssertion(1, 1, 0, 1);
         }
 
-        private void DoAssertion(int currentFuncCallCount, int formatterFuncCallCount, int printerFuncCallCount)
+        [Fact]
+        public void TestDetectChargingCurrentMeasurementFlowWithoutSensorProcessor()
+        {
+            _BatteryMeasurements = new BatteryMeasurements(_ChargingCurrentMeasurement, _Formatter, null);
+
+            _BatteryMeasurements.DetectChargingCurrentRangesAndReadings(null, PrinterFunction);
+
+            DoAssertion(1, 1, 1, 0);
+
+        }
+
+        private void DoAssertion(int currentFuncCallCount, int formatterFuncCallCount, int printerFuncCallCount, int sensorFuncCallCount)
         {
             Assert.Equal(currentFuncCallCount, _ChargingCurrentMeasurement.CurrentFunctionCallCount);
 
             Assert.Equal(formatterFuncCallCount, _Formatter.FunctionCallCount);
 
             Assert.Equal(printerFuncCallCount, _PrinterFunctionCall);
+
+            Assert.Equal(sensorFuncCallCount, _SensorReadingProcessor.ProcessorFunctionCallCount);
         }
 
         private void PrinterFunction(string input)
